@@ -3,184 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Army Public School | Demo Portal</title>
+    <title>Army Public School | Excellence in Education</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --primary: #1e3a8a; /* Navy Blue */
+            --secondary: #b91c1c; /* APS Red */
+            --light: #f3f4f6;
+            --dark: #111827;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; background: #f4f7f6; color: #333; }
+        body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background: #fff; scroll-behavior: smooth; }
 
-        /* Top Bar */
-        .top-bar {
-            background: #b91c1c; /* Reddish theme like APS */
+        /* Top Header Info */
+        .top-info {
+            background: var(--secondary);
             color: white;
-            padding: 8px 10%;
+            padding: 10px 10%;
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
+            font-size: 14px;
         }
 
-        /* Header & Logo */
+        /* Branding Header */
         header {
-            background: white;
-            padding: 15px 10%;
+            padding: 20px 10%;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            border-bottom: 4px solid #1e40af;
+            align-items: center;
+            border-bottom: 5px solid var(--primary);
         }
-        .logo-area { display: flex; align-items: center; gap: 15px; }
-        .logo-area img { height: 70px; }
-        .school-name h1 { font-size: 22px; color: #1e3a8a; text-transform: uppercase; }
-        .school-name p { font-size: 14px; color: #666; }
+        .school-logo { display: flex; align-items: center; gap: 20px; }
+        .school-logo img { height: 80px; }
+        .school-logo h1 { font-size: 26px; color: var(--primary); font-weight: 900; }
 
         /* Navigation */
         nav {
-            background: #1e3a8a;
-            padding: 0 10%;
+            background: var(--primary);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li { position: relative; }
-        .nav-links a {
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        nav ul li a {
             display: block;
-            padding: 15px 20px;
+            padding: 18px 25px;
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
+            font-weight: bold;
+            font-size: 15px;
             transition: 0.3s;
         }
-        .nav-links a:hover { background: #b91c1c; }
+        nav ul li a:hover { background: var(--secondary); }
 
         /* Hero Slider Placeholder */
-        .hero-slider {
-            height: 400px;
-            background: #ddd url('https://via.placeholder.com/1920x600?text=School+Campus+Image') no-repeat center/cover;
+        .hero {
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1541339907198-e08756edd83f?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             color: white;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        }
-
-        /* Main Content Grid */
-        .container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            padding: 40px 10%;
-        }
-
-        /* Notice Board Section */
-        .box {
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .box-header {
-            background: #1e3a8a;
-            color: white;
-            padding: 12px 15px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
-        .box-body { padding: 15px; }
-        
-        .news-item {
-            border-bottom: 1px dashed #ddd;
-            padding: 10px 0;
-            font-size: 14px;
-        }
-        .news-item:last-child { border: none; }
-        .news-item span { color: #b91c1c; font-weight: bold; margin-right: 5px; }
-
-        /* Principal Section */
-        .principal-msg { display: flex; gap: 15px; align-items: flex-start; }
-        .principal-msg img { width: 120px; border: 3px solid #eee; }
-
-        footer {
-            background: #111;
-            color: #ccc;
-            padding: 30px 10%;
             text-align: center;
-            font-size: 13px;
         }
+        .hero h2 { font-size: 45px; text-transform: uppercase; }
+
+        /* Section Universal Style */
+        .section-container { padding: 80px 10%; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: var(--primary);
+            text-transform: uppercase;
+            position: relative;
+        }
+        .section-title::after {
+            content: ''; width: 80px; height: 4px; background: var(--secondary);
+            display: block; margin: 10px auto;
+        }
+
+        /* About Grid */
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .about-content img { width: 100%; border-radius: 10px; box-shadow: 10px 10px 0px var(--primary); }
+
+        /* Facilities Grid */
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .facility-card {
+            background: var(--light);
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .facility-card:hover { transform: translateY(-10px); background: #e2e8f0; }
+        .facility-card i { font-size: 40px; color: var(--secondary); margin-bottom: 15px; }
+
+        /* Gallery Masonry-like Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .gallery-grid img:hover { opacity: 0.8; transform: scale(1.02); }
+
+        /* Contact Section */
+        .contact-content { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+        .contact-info { background: var(--primary); color: white; padding: 40px; border-radius: 10px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px;
+        }
+        .submit-btn { background: var(--secondary); color: white; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; border-radius: 5px; }
+
+        footer { background: var(--dark); color: white; text-align: center; padding: 40px; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div><i class="fa fa-phone"></i> +91 1234567890 | <i class="fa fa-envelope"></i> info@apsdemo.edu.in</div>
-        <div>CBSE Affiliation No: 1234567</div>
+    <div class="top-info">
+        <div><i class="fas fa-phone"></i> +91 8218440133 | <i class="fas fa-envelope"></i> info@apsdemo.edu.in</div>
+        <div>Affiliation ID: 1234567</div>
     </div>
 
     <header>
-        <div class="logo-area">
-            <img src="https://via.placeholder.com/70?text=Logo" alt="Logo">
-            <div class="school-name">
-                <h1>ARMY PUBLIC SCHOOL</h1>
-                <p>TRUTH IS GOD | AFFILIATED TO CBSE</p>
-            </div>
+        <div class="school-logo">
+            <img src="https://via.placeholder.com/80?text=LOGO" alt="APS Logo">
+            <h1>ARMY PUBLIC SCHOOL</h1>
         </div>
-        <div class="header-right">
-            <button style="padding: 10px 20px; background: #b91c1c; color: white; border: none; cursor: pointer;">ERP LOGIN</button>
+        <div>
+            <button class="submit-btn">ERP LOGIN</button>
         </div>
     </header>
 
     <nav>
-        <ul class="nav-links">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
-            <li><a href="#">ACADEMICS</a></li>
-            <li><a href="#">ADMISSION</a></li>
-            <li><a href="#">GALLERY</a></li>
-            <li><a href="contact.html">CONTACT US</a></li>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="#facilities">FACILITIES</a></li>
+            <li><a href="#gallery">GALLERY</a></li>
+            <li><a href="#contact">CONTACT US</a></li>
         </ul>
     </nav>
 
-    <div class="hero-slider">
-        <h1>WELCOME TO OUR SCHOOL</h1>
+    <div id="home" class="hero">
+        <h2>EMPOWERING LEADERS OF TOMORROW</h2>
+        <p>A Tradition of Excellence, A Future of Innovation</p>
     </div>
 
-    <div class="container">
-        <div class="main-content">
-            <div class="box">
-                <div class="box-header">PRINCIPAL'S MESSAGE</div>
-                <div class="box-body principal-msg">
-                    <img src="https://via.placeholder.com/120x150?text=Principal" alt="Principal">
-                    <div>
-                        <p>Welcome to Army Public School. We believe in holistic development of every child, ensuring they grow into responsible citizens of the country...</p>
-                        <a href="#" style="color: #1e3a8a; font-weight: bold;">Read More</a>
-                    </div>
-                </div>
+    <section id="about" class="section-container">
+        <h2 class="section-title">About Our School</h2>
+        <div class="about-content">
+            <div>
+                <p>Army Public School has been a pioneer in providing quality education to the children of defense personnel and civilians. With a sprawling campus and state-of-the-art facilities, we ensure that every student gets the best environment to grow.</p>
+                <br>
+                <p>Our focus is not just on academics but on character building, sportsmanship, and discipline.</p>
             </div>
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="School Building">
         </div>
+    </section>
 
-        <div class="sidebar">
-            <div class="box">
-                <div class="box-header">LATEST NOTICES <i class="fa fa-bullhorn"></i></div>
-                <div class="box-body">
-                    <marquee direction="up" scrollamount="3" style="height: 200px;">
-                        <div class="news-item"><span>NEW</span> Admission Open for Session 2026-27.</div>
-                        <div class="news-item"><span>HOT</span> Summer Vacation starts from 15th May.</div>
-                        <div class="news-item"><span>INFO</span> Parent-Teacher Meeting on Saturday.</div>
-                        <div class="news-item"><span>NEW</span> Annual Sports Day Winners announced.</div>
-                    </marquee>
-                </div>
+    <section id="facilities" class="section-container" style="background: #fdfdfd;">
+        <h2 class="section-title">Our Facilities</h2>
+        <div class="facility-grid">
+            <div class="facility-card">
+                <i class="fas fa-flask"></i>
+                <h3>Science Labs</h3>
+                <p>Advanced physics, chemistry, and biology labs for practical learning.</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-book-reader"></i>
+                <h3>Digital Library</h3>
+                <p>Thousands of books and e-resources for students and staff.</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-bus"></i>
+                <h3>Transport</h3>
+                <p>Safe and GPS-tracked bus service for all major local routes.</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-basketball-ball"></i>
+                <h3>Sports Complex</h3>
+                <p>Dedicated courts for basketball, football, and indoor games.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="gallery" class="section-container">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=500&q=80" alt="Activity">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=500&q=80" alt="Class">
+            <img src="https://images.unsplash.com/photo-1511629091441-ee46146481b6?auto=format&fit=crop&w=500&q=80" alt="Sports">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=500&q=80" alt="Event">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="Kids">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=500&q=80" alt="Lab">
+        </div>
+    </section>
+
+    <section id="contact" class="section-container" style="background: #f9fafb;">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <br>
+                <p><i class="fas fa-map-marker-alt"></i> Cantt Area, Rudrapur, Uttarakhand</p>
+                <br>
+                <p><i class="fas fa-phone"></i> +91 8218440133</p>
+                <br>
+                <p><i class="fas fa-envelope"></i> info@apsdemo.edu.in</p>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message"></textarea>
+                    <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        &copy; 2026 Army Public School. All Rights Reserved. <br>
-        Developed by SkyRise Digital
+        <p>&copy; 2026 Army Public School. All Rights Reserved. | Crafted by SkyRise Digital</p>
     </footer>
 
 </body>
